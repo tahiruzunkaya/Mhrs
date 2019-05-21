@@ -1,0 +1,9 @@
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\bin\Debug\netcoreapp2.1\mhrs.Entity.deps.json
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\bin\Debug\netcoreapp2.1\mhrs.Entity.dll
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\bin\Debug\netcoreapp2.1\mhrs.Entity.pdb
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\obj\Debug\netcoreapp2.1\mhrs.Entity.csprojAssemblyReference.cache
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\obj\Debug\netcoreapp2.1\mhrs.Entity.csproj.CoreCompileInputs.cache
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\obj\Debug\netcoreapp2.1\mhrs.Entity.AssemblyInfoInputs.cache
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\obj\Debug\netcoreapp2.1\mhrs.Entity.AssemblyInfo.cs
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\obj\Debug\netcoreapp2.1\mhrs.Entity.dll
+C:\Users\Tahir\source\repos\mhrs\mhrs.Entity\obj\Debug\netcoreapp2.1\mhrs.Entity.pdb

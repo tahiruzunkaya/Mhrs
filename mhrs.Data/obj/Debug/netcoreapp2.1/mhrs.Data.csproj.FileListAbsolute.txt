@@ -1,0 +1,14 @@
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Data.deps.json
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Data.dll
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.csprojAssemblyReference.cache
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.csproj.CoreCompileInputs.cache
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.AssemblyInfoInputs.cache
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.AssemblyInfo.cs
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Data.pdb
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Entity.dll
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Entity.pdb
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.csproj.CopyComplete
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.dll
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\obj\Debug\netcoreapp2.1\mhrs.Data.pdb
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Data.runtimeconfig.json
+C:\Users\Tahir\source\repos\mhrs\mhrs.Data\bin\Debug\netcoreapp2.1\mhrs.Data.runtimeconfig.dev.json
