@@ -6,6 +6,7 @@ using mhrs.Data.Abstract;
 using mhrs.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace mhrs.WebApi.Controllers
 {
@@ -29,6 +30,24 @@ namespace mhrs.WebApi.Controllers
             uow.Poliklinikler.Add(entity);
             uow.SaveChanges();
 
+            return true;
+        }
+
+        public JsonResult PoliklinikListele()
+        {
+            return Json(JsonConvert.SerializeObject(uow.Poliklinikler.GetAll().ToList()));
+        }
+
+        [HttpGet]
+        public bool HastaneSil(int id)
+        {
+            var entity = uow.Poliklinikler.Get(id);
+            if (entity == null)
+            {
+                return false;
+            }
+            uow.Poliklinikler.Delete(entity);
+            uow.SaveChanges();
             return true;
         }
 
