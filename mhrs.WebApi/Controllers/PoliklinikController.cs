@@ -6,6 +6,7 @@ using mhrs.Data.Abstract;
 using mhrs.Entity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace mhrs.WebApi.Controllers
@@ -35,7 +36,7 @@ namespace mhrs.WebApi.Controllers
 
         public JsonResult PoliklinikListele()
         {
-            return Json(JsonConvert.SerializeObject(uow.Poliklinikler.GetAll().ToList()));
+            return Json(JsonConvert.SerializeObject(uow.Poliklinikler.GetAll().Include(i=>i.Hastane).ToList()));
         }
 
         [HttpGet]
