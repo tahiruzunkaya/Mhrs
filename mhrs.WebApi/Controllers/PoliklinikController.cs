@@ -36,7 +36,7 @@ namespace mhrs.WebApi.Controllers
 
         public JsonResult PoliklinikListele()
         {
-            return Json(JsonConvert.SerializeObject(uow.Poliklinikler.GetAll().Include(i=>i.Hastane).ToList()));
+            return Json(JsonConvert.SerializeObject(uow.Poliklinikler.GetAll().ToList()));
         }
 
         [HttpGet]
