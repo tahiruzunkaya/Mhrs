@@ -64,7 +64,23 @@ namespace mhrs.WebApi.Controllers
         [HttpGet]
         public JsonResult DoktorListele(int id)
         {
-            return Json(JsonConvert.SerializeObject(uow.Doktorlar.GetAll().Where(i=>i.PoliklinikId==id).ToList()));
+
+            List<DoktorKullaniciModel> lst = new List<DoktorKullaniciModel>();
+
+            var liste= uow.Doktorlar.GetAll().Where(i => i.PoliklinikId == id).ToList();
+
+            foreach (var item in liste)
+            {
+                DoktorKullaniciModel m = new DoktorKullaniciModel()
+                {
+                    doktor = item,
+                    kullanici = uow.Kullanicilar.Get(item.KullaniciId)
+                };
+                lst.Add(m);
+            }
+
+
+            return Json(JsonConvert.SerializeObject(lst));
         }
 
     }
