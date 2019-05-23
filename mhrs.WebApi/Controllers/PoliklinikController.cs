@@ -40,6 +40,12 @@ namespace mhrs.WebApi.Controllers
         }
 
         [HttpGet]
+        public JsonResult PoliklinikListeleId(int id)
+        {
+            return Json(JsonConvert.SerializeObject(uow.Poliklinikler.GetAll().Where(i=>i.HastaneId==id).ToList()));
+        }
+
+        [HttpGet]
         public bool HastaneSil(int id)
         {
             var entity = uow.Poliklinikler.Get(id);
