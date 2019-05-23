@@ -40,7 +40,7 @@ namespace mhrs.WebApi.Controllers
         [HttpGet]
         public JsonResult GetHastane(int id)
         {
-            return Json(uow.Hastaneler.Get(id));
+            return Json(JsonConvert.SerializeObject(uow.Hastaneler.Get(id)));
         }
 
 
