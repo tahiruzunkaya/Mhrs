@@ -37,6 +37,12 @@ namespace mhrs.WebApi.Controllers
 
             return Json(JsonConvert.SerializeObject(uow.Hastaneler.GetAll().ToList()));
         }
+        [HttpGet]
+        public JsonResult GetHastane(int id)
+        {
+            return Json(uow.Hastaneler.Get(id));
+        }
+
 
         [HttpGet]
         public bool HastaneSil(int id)
