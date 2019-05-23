@@ -71,10 +71,13 @@ namespace mhrs.WebApi.Controllers
 
             foreach (var item in liste)
             {
+                var ad = uow.Kullanicilar.Get(item.KullaniciId).Ad;
+                var soyad = uow.Kullanicilar.Get(item.KullaniciId).Soyad;
                 DoktorKullaniciModel m = new DoktorKullaniciModel()
                 {
-                    doktor = item,
-                    kullanici = uow.Kullanicilar.Get(item.KullaniciId)
+                    doktorId = item.DoktorId,
+                    adi = ad,
+                    soyadi=soyad
                 };
                 lst.Add(m);
             }

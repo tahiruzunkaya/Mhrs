@@ -8,7 +8,8 @@ namespace mhrs.WebApi.Models
 {
     public class DoktorKullaniciModel
     {
-        public Doktor doktor { get; set; }
-        public Kullanici kullanici { get; set; }
+        public int doktorId { get; set; }
+        public String adi { get; set; }
+        public String soyadi { get; set; }
     }
 }
