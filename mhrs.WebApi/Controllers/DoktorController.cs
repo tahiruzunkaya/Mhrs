@@ -7,6 +7,7 @@ using mhrs.Entity;
 using mhrs.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace mhrs.WebApi.Controllers
 {
@@ -59,5 +60,12 @@ namespace mhrs.WebApi.Controllers
             uow.SaveChanges();
             return true;
         }
+
+        [HttpGet]
+        public JsonResult DoktorListele(int id)
+        {
+            return Json(JsonConvert.SerializeObject(uow.Doktorlar.GetAll().Where(i=>i.PoliklinikId==id).ToList()));
+        }
+
     }
 }
