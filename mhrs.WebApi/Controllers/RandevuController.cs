@@ -100,7 +100,7 @@ namespace mhrs.WebApi.Controllers
         {
             List<DoktorRandevuModel> lst = new List<DoktorRandevuModel>();
 
-            var result = uow.Randevular.GetAll().Where(i => i.KullaniciId == id).Include(i => i.Kullanici).ToList();
+            var result = uow.Randevular.GetAll().Where(i => i.Doktor.Kullanici.KullaniciId == id).Include(i => i.Kullanici).ToList();
 
             foreach (var item in result)
             {
