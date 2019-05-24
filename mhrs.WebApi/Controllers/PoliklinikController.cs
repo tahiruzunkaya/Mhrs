@@ -46,7 +46,7 @@ namespace mhrs.WebApi.Controllers
         }
 
         [HttpGet]
-        public bool HastaneSil(int id)
+        public bool PoliklinikSil(int id)
         {
             var entity = uow.Poliklinikler.Get(id);
             if (entity == null)
