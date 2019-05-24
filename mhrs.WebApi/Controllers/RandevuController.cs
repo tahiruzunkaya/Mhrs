@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using mhrs.Data.Abstract;
+using mhrs.Entity;
 using mhrs.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,19 @@ namespace mhrs.WebApi.Controllers
         public RandevuController(IUnitOfWork _uow)
         {
             uow = _uow;
+        }
+
+        [HttpPost]
+        public bool RandevuEkle(Randevu entity)
+        {
+
+            entity.Kullanici = uow.Kullanicilar.Get(entity.KullaniciId);
+            entity.Doktor = uow.Doktorlar.Get(entity.DoktorId);
+
+            uow.Randevular.Add(entity);
+            uow.SaveChanges();
+            return true;
+
         }
 
         [HttpGet]
