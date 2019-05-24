@@ -94,7 +94,9 @@ namespace mhrs.WebApi.Controllers
         [HttpGet]
         public JsonResult GetKull(int id)
         {
-            return Json(JsonConvert.SerializeObject(uow.Kullanicilar.Get(id)));
+            List<Kullanici> kull = new List<Kullanici>();
+            kull.Add(uow.Kullanicilar.Get(id));
+            return Json(JsonConvert.SerializeObject(kull));
         }
 
     }
