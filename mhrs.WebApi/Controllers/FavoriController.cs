@@ -4,8 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using mhrs.Data.Abstract;
 using mhrs.Entity;
+using mhrs.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace mhrs.WebApi.Controllers
 {
@@ -35,6 +38,30 @@ namespace mhrs.WebApi.Controllers
             uow.SaveChanges();
             return true;
 
+        }
+
+        public JsonResult FavoriListele(int id)
+        {
+            List<FavoriListeleModel> lst = new List<FavoriListeleModel>();
+
+            var result = uow.Favoriler.GetAll().Where(i => i.KullaniciId == id).Include(i => i.Doktor).ThenInclude(i => i.Kullanici).Include(i => i.Doktor).ThenInclude(i => i.Poliklinik).ThenInclude(i => i.Hastane).ToList();
+
+            foreach (var item in result)
+            {
+                FavoriListeleModel m = new FavoriListeleModel()
+                {
+                    doktorad = item.Doktor.Kullanici.Ad,
+                    doktorsoyad = item.Doktor.Kullanici.Soyad,
+                    doktorid = item.DoktorId,
+                    favoriid = item.FavoriId,
+                    hastaneadi = item.Doktor.Poliklinik.Hastane.HastaneAdi,
+                    poliklinikadi = item.Doktor.Poliklinik.PoliklinikAdi,
+                    savedate = item.SaveDate
+                };
+                lst.Add(m);
+            }
+
+            return Json(JsonConvert.SerializeObject(lst));
         }
 
     }
