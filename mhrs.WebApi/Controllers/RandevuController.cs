@@ -96,6 +96,26 @@ namespace mhrs.WebApi.Controllers
         }
         
         [HttpGet]
+        public JsonResult DoktorRandevu(int id)
+        {
+            List<DoktorRandevuModel> lst = new List<DoktorRandevuModel>();
+
+            var result = uow.Randevular.GetAll().Where(i => i.DoktorId == id).Include(i => i.Kullanici).ToList();
+
+            foreach (var item in result)
+            {
+                DoktorRandevuModel m = new DoktorRandevuModel()
+                {
+                    kullaniciad = item.Kullanici.Ad,
+                    kullanicisoyad = item.Kullanici.Soyad,
+                    tarih = item.Tarihi
+                };
+                lst.Add(m);
+            }
+            return Json(JsonConvert.SerializeObject(lst));
+        }
+
+        [HttpGet]
         public bool RandevuIptal(int id)
         {
             uow.Randevular.Delete(uow.Randevular.Get(id));
