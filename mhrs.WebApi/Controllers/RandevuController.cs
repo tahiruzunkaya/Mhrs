@@ -94,6 +94,13 @@ namespace mhrs.WebApi.Controllers
 
             return Json(JsonConvert.SerializeObject(lst));
         }
-
+        
+        [HttpGet]
+        public bool RandevuIptal(int id)
+        {
+            uow.Randevular.Delete(uow.Randevular.Get(id));
+            uow.SaveChanges();
+            return true;
+        }
     }
 }
