@@ -34,7 +34,7 @@ namespace mhrs.WebApi.Controllers
             entity.Doktor = uow.Doktorlar.Get(entity.DoktorId);
             entity.Kullanici = uow.Kullanicilar.Get(entity.KullaniciId);
             uow.Favoriler.Add(entity);
-            
+
             uow.SaveChanges();
             return true;
 
@@ -75,10 +75,36 @@ namespace mhrs.WebApi.Controllers
         [HttpGet]
         public JsonResult EnPopuler(int id)
         {
-            var result = uow.Favoriler.GetAll().Include(i => i.Doktor).ThenInclude(i => i.Poliklinik).ThenInclude(i => i.Hastane).Where(i => i.Doktor.Poliklinik.Hastane.HastaneId == id).GroupBy(i => i.DoktorId).Take(5);
+            var result = uow.Favoriler.GetAll().Include(i => i.Doktor).ThenInclude(i => i.Poliklinik).ThenInclude(i => i.Hastane).Include(i => i.Doktor).ThenInclude(i => i.Kullanici).Where(i => i.Doktor.Poliklinik.Hastane.HastaneId == id).ToList();
 
-            return Json(JsonConvert.SerializeObject(result));
+            var list = result.GroupBy(j => j.DoktorId).Select(grp => grp.ToList()).ToList();
+
+            List<EnPopulerModel> lst = new List<EnPopulerModel>();
+
+
+            foreach (var item in list)
+            {
+                for (int i = 0; i < item.Count; i++)
+                {
+                    if (i == 0) { 
+                        EnPopulerModel m = new EnPopulerModel()
+                        {
+                            doktoradi = item[i].Doktor.Kullanici.Ad,
+                            doktorsoyadi = item[i].Doktor.Kullanici.Soyad,
+                            hastaneadi = item[i].Doktor.Poliklinik.Hastane.HastaneAdi,
+                            poliklinikadi = item[i].Doktor.Poliklinik.PoliklinikAdi
+                        };
+
+                        lst.Add(m);
+                    }
+                }
+            }
+
+
+            return Json(JsonConvert.SerializeObject(lst));
 
         }
+
+
     }
 }
