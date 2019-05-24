@@ -71,5 +71,14 @@ namespace mhrs.WebApi.Controllers
             uow.SaveChanges();
             return true;
         }
+
+        [HttpGet]
+        public JsonResult EnPopuler(int id)
+        {
+            var result = uow.Favoriler.GetAll().Include(i => i.Doktor).ThenInclude(i => i.Poliklinik).ThenInclude(i => i.Hastane).Where(i => i.Doktor.Poliklinik.Hastane.HastaneId == id).GroupBy(i => i.DoktorId).Take(5);
+
+            return Json(JsonConvert.SerializeObject(result));
+
+        }
     }
 }
