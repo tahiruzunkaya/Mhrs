@@ -64,5 +64,12 @@ namespace mhrs.WebApi.Controllers
             return Json(JsonConvert.SerializeObject(lst));
         }
 
+        [HttpGet]
+        public bool FavoriSil(int id)
+        {
+            uow.Favoriler.Delete(uow.Favoriler.Get(id));
+            uow.SaveChanges();
+            return true;
+        }
     }
 }
