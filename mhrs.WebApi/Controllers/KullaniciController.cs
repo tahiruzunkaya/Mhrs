@@ -64,6 +64,15 @@ namespace mhrs.WebApi.Controllers
             }
         }
 
+        [HttpPost]
+        public bool KullaniciGuncelle(Kullanici entity)
+        {
+            entity.Roller = uow.Rollers.Get(entity.RollerId);
+            uow.Kullanicilar.Edit(entity);
+            uow.SaveChanges();
+            return true;
+        }
+
         [HttpGet]
         public Kullanici GetKullanici(int id)
         {
