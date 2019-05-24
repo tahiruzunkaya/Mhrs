@@ -7,6 +7,7 @@ using mhrs.Entity;
 using mhrs.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace mhrs.WebApi.Controllers
@@ -63,6 +64,36 @@ namespace mhrs.WebApi.Controllers
             return Json(JsonConvert.SerializeObject(lst));
         }
 
+        [HttpGet]
+        public JsonResult KullaniciRandevular(int id)
+        {
+
+            List<KullaniciRandevularModel> lst=new List<KullaniciRandevularModel>();
+
+            var result = uow.Randevular.GetAll().Where(i => i.KullaniciId == id).Include(i=>i.Doktor).ThenInclude(i=>i.Kullanici).Include(i=>i.Doktor).ThenInclude(i=>i.Poliklinik).ThenInclude(i=>i.Hastane).ToList();
+
+            foreach (var item in result)
+            {
+
+                KullaniciRandevularModel m = new KullaniciRandevularModel()
+                {
+                    doktorad = item.Doktor.Kullanici.Ad,
+                    doktorid = item.DoktorId,
+                    doktorsoyad = item.Doktor.Kullanici.Soyad,
+                    hastaneadi = item.Doktor.Poliklinik.Hastane.HastaneAdi,
+                    poliklinikadi = item.Doktor.Poliklinik.PoliklinikAdi,
+                    randevuid = item.RandevuId,
+                    tarihi = item.Tarihi
+
+
+                };
+                lst.Add(m);
+
+            }
+
+
+            return Json(JsonConvert.SerializeObject(lst));
+        }
 
     }
 }
