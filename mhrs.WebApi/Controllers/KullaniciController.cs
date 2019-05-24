@@ -7,12 +7,13 @@ using mhrs.Entity;
 using mhrs.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace mhrs.WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class KullaniciController : ControllerBase
+    public class KullaniciController : Controller
     {
         private IUnitOfWork uow;
 
@@ -88,6 +89,12 @@ namespace mhrs.WebApi.Controllers
                 uow.SaveChanges();
                 return true;
             }
+        }
+
+        [HttpGet]
+        public JsonResult GetKull(int id)
+        {
+            return Json(JsonConvert.SerializeObject(uow.Kullanicilar.Get(id)));
         }
 
     }
