@@ -86,5 +86,13 @@ namespace mhrs.WebApi.Controllers
             return Json(JsonConvert.SerializeObject(lst));
         }
 
+        public JsonResult GetDoktor(int id){
+
+            var entity=uow.Doktorlar.Get(id);
+
+            
+            return Json(JsonConvert.SerializeObject(entity));
+        }
+
     }
 }
