@@ -16,6 +16,7 @@ namespace mhrs.WebApi.Controllers
     [ApiController]
     public class FavoriController : Controller
     {
+
         private IUnitOfWork uow;
         public FavoriController(IUnitOfWork _uow)
         {
