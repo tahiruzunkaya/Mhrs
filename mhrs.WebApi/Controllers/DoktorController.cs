@@ -20,6 +20,7 @@ namespace mhrs.WebApi.Controllers
         public DoktorController(IUnitOfWork _uow)
         {
             uow = _uow;
+
         }
 
         [HttpPost]
